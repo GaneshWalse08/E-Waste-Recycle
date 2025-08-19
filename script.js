@@ -133,3 +133,33 @@ window.addEventListener("scroll", () => {
 
 // Initial check on page load
 handleScrollAnimation();
+
+
+// --- NEW: Login Dropdown Functionality ---
+document.addEventListener('DOMContentLoaded', function() {
+    const loginDropdown = document.querySelector('.login-dropdown');
+    const loginBtn = document.getElementById('loginBtn');
+    const blurOverlay = document.querySelector('.login-blur-overlay');
+
+    loginDropdown.addEventListener('mouseenter', function() {
+        loginDropdown.classList.add('active');
+    });
+    loginDropdown.addEventListener('mouseleave', function() {
+        loginDropdown.classList.remove('active');
+    });
+
+    loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!loginDropdown.contains(e.target) && !e.target.classList.contains('login-blur-overlay')) {
+            loginDropdown.classList.remove('active');
+        }
+    });
+
+    blurOverlay.addEventListener('click', function() {
+        loginDropdown.classList.remove('active');
+    });
+});

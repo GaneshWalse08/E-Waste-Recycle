@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>EcoCollect — User Login / Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* page-specific, simple & attractive */
+        body {
+            background: linear-gradient(180deg, #f6fbf8 0%, #ffffff 60%);
+        }
+
+        .auth-wrap {
+            max-width: 1100px;
+            margin: 64px auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 2rem;
+            align-items: center;
+            transition: all 220ms ease;
+        }
+
+        /* when registration is active, center the auth card and collapse layout */
+        .auth-wrap.register-mode {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+
+        .auth-wrap.register-mode .auth-card {
+            width: 420px;
+            max-width: 92%;
+            box-shadow: 0 12px 40px rgba(16, 40, 40, 0.08);
+        }
+
+        .brand-card {
+            position: relative;
+            color: #fff;
+            padding: 2.4rem;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            overflow: hidden;
+            /* no direct background here — we use pseudo-elements so we can blur the image */
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.02));
+        }
+
+        /* blurred background layer (below content) */
+        .brand-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.kabadiwalaonline.com/wp-content/uploads/2024/04/E-Waste-Recycling-1536x864.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(2px) brightness(0.95) saturate(1.05);
+            transform: scale(1.06);
+            z-index: 0;
+        }
+
+        /* subtle overlay to ensure text contrast */
+        .brand-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.10));
+            z-index: 1;
+        }
+
+        /* keep card content above pseudo layers */
+        .brand-card>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* make text bolder for better contrast/readability */
+        .brand-card h2,
+        .brand-card p,
+        .brand-card .feature,
+        .brand-card small {
+            font-weight: 700;
+        }
+
+        .brand-card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .brand-card p {
+            opacity: 0.95;
+            line-height: 1.45;
+        }
+
+        .features {
+            margin-top: auto;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .auth-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.6rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .auth-tabs button {
+            flex: 1;
+            padding: .7rem;
+            border-radius: 8px;
+            border: 1px solid #e9eef0;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-tabs button.active {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            margin-bottom: 0.9rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: .35rem;
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: .6rem .8rem;
+            border-radius: 8px;
+            border: 1px solid #e6eef0;
+            font-size: .95rem;
+        }
+
+        .auth-actions {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.9rem;
+        }
+
+        .auth-actions .left {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .msg {
+            margin-top: .6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .small-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        /* responsive */
+        @media(max-width:980px) {
+            .auth-wrap {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .brand-card {
+                order: 2
+            }
+        }
+
+        /* footer tiny spacing fix */
+        .footer {
+            margin-top: 3rem;
+        }
+
+        /* hide navbar Login/Sign Up on this page */
+        .navbar .login-dropdown {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="nav-logo">EcoCollect</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#hero" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item login-dropdown">
+                    <a href="user-login.html" class="nav-link btn btn-primary" id="loginBtn">Login / Sign Up</a>
+                    <div class="login-popup">
+                        <a href="user-login.html" class="popup-option">User Login</a>
+                        <a href="company-login.html" class="popup-option">Company Login</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container auth-wrap">
+            <div class="brand-card">
+                <div>
+                    <h2>Welcome to EcoCollect</h2>
+                    <p>At EcoCollect, our mission is to create a circular economy by providing a seamless platform for
+                        individuals and businesses to buy, sell, and recycle pre-owned goods. We believe in reducing
+                        waste, conserving resources, and giving products a second life.</p>
+                </div>
+
+                <div class="features" aria-hidden="true">
+                    <div class="feature"><i class="fa-regular fa-circle-check"></i> Secure</div>
+                    <div class="feature"><i class="fa-solid fa-leaf"></i> Eco-friendly</div>
+                    <div class="feature"><i class="fa-solid fa-truck"></i> Pickup support</div>
+                </div>
+
+                <small style="opacity:0.95">Need help? <a href="index.html#contact" class="small-link">Contact
+                        us</a></small>
+            </div>
+
+            <div class="auth-card" role="region" aria-labelledby="authTitle">
+                <h3 id="authTitle">Account</h3>
+                <p class="section-subtitle" style="margin-top:0.2rem; margin-bottom:1rem; color:#5b6b6b">Sign in or
+                    create a new account</p>
+
+                <div class="auth-tabs" role="tablist">
+                    <button type="button" id="tab-login" class="active" aria-controls="login-form">Login</button>
+                    <button type="button" id="tab-register" aria-controls="register-form">Register</button>
+                </div>
+
+                <div id="forms">
+                    <!-- LOGIN -->
+                    <form id="login-form" aria-hidden="false" autocomplete="on">
+                        <div class="form-row">
+                            <label for="login-email">Email</label>
+                            <input id="login-email" type="email" name="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-row">
+                            <label for="login-password">Password</label>
+                            <input id="login-password" type="password" name="password" required placeholder="••••••••">
+                        </div>
+
+                        <div class="auth-actions">
+                            <div class="left">
+                                <button class="btn btn-primary" type="submit">Sign In</button>
+                                <a href="#" id="forgotLink" class="small-link">Forgot?</a>
+                            </div>
+                            <a href="#" id="quickGuest" class="small-link" style="text-decoration:underline">Continue as
+                                guest</a>
+                        </div>
+                        <div id="login-msg" class="msg" role="status"></div>
+                    </form>
+
+                    <!-- REGISTER -->
+                    <form id="register-form" style="display:none" aria-hidden="true" autocomplete="on">
+                        <div class="form-row">
+                            <label for="reg-name">Full name</label>
+                            <input id="reg-name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-mobile">Mobile number</label>
+                            <input id="reg-mobile" name="mobile" inputmode="tel" pattern="[0-9]{7,15}"
+                                placeholder="+91 98765..." required>
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-email">Email</label>
+                            <input id="reg-email" type="email" name="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-address">Address</label>
+                            <textarea id="reg-address" name="address" rows="2" required
+                                placeholder="Street, City, State"></textarea>
+                        </div>
+                        <div class="form-row" style="display:flex; gap:0.6rem">
+                            <div style="flex:1">
+                                <label for="reg-pincode">Pin code</label>
+                                <input id="reg-pincode" name="pincode" pattern="[0-9]{4,8}" required
+                                    placeholder="560001">
+                            </div>
+                            <div style="flex:1">
+                                <label for="reg-password">Create password</label>
+                                <input id="reg-password" type="password" name="password" minlength="6" required
+                                    placeholder="••••••">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-password-confirm">Confirm password</label>
+                            <input id="reg-password-confirm" type="password" required placeholder="••••••">
+                        </div>
+
+                        <div class="auth-actions">
+                            <div class="left">
+                                <button class="btn btn-primary" type="submit">Create account</button>
+                                <button id="cancelRegister" type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        <div id="register-msg" class="msg" role="status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer: same structure as home page -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-about">
+                        <h3>EcoCollect</h3>
+                        <p>Your one-stop solution for sustainable living. Join us in making the world a greener place,
+                            one transaction at a time.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#faq">FAQs</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>Follow Us</h4>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 EcoCollect. All Rights Reserved. A college project.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // small UI tab toggles (keeps same IDs used by user-auth.js)
+        const tabLogin = document.getElementById('tab-login');
+        const tabRegister = document.getElementById('tab-register');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const brandCard = document.querySelector('.brand-card');
+        const authWrap = document.querySelector('.auth-wrap');
+
+        function updateBrandCard() {
+            if (!brandCard) return;
+            // hide brand card on register, show on login
+            if (tabRegister.classList.contains('active')) {
+                brandCard.style.display = 'none';
+                authWrap?.classList.add('register-mode');
+            } else {
+                brandCard.style.display = '';
+                authWrap?.classList.remove('register-mode');
+            }
+        }
+
+        tabLogin.addEventListener('click', (e) => {
+            e?.preventDefault?.();
+            tabLogin.classList.add('active');
+            tabRegister.classList.remove('active');
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            updateBrandCard();
+        });
+        tabRegister.addEventListener('click', (e) => {
+            e?.preventDefault?.();
+            tabLogin.classList.remove('active');
+            tabRegister.classList.add('active');
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            updateBrandCard();
+        });
+        // initialize correct state on load
+        updateBrandCard();
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // optional quick guest (just redirects home)
+        document.getElementById('quickGuest')?.addEventListener('click', (e) => { e.preventDefault(); location.href = 'index.html'; });
+    </script>
+
+    <script type="module" src="user-auth.js"></script>
+</body>
+
+</html>

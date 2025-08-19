@@ -20,7 +20,13 @@
                 <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="login.html" class="nav-link btn btn-primary">Login / Sign Up</a></li>
+                <li class="nav-item login-dropdown">
+                    <a href="login.html" class="nav-link btn btn-primary" id="loginBtn">Login </a>
+                    <div class="login-popup">
+                        <a href="user-login.html" class="popup-option">User Login</a>
+                        <a href="company-login.html" class="popup-option">Company Login</a>
+                    </div>
+                </li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -297,5 +303,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="auth-state.js"></script>
 </body>
 </html>
