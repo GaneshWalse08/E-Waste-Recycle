@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>EcoCollect — User Login / Register</title>
+    <title>EcoCollect — Company Login / Register</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -342,7 +342,7 @@
                                 <button class="btn btn-primary" type="submit">Sign In</button>
                                 <a href="#" id="forgotLink" class="small-link">Forgot?</a>
                             </div>
-                            <a href="index.html" id="quickGuest" class="small-link"
+                            <a href="#" id="quickGuest" class="small-link"
                                 style="text-decoration:underline">Continue as
                                 guest</a>
                         </div>
@@ -350,47 +350,44 @@
                     </form>
 
                     <!-- REGISTER -->
-                    <form id="register-form" style="display:none" aria-hidden="true" autocomplete="on">
+                    <form id="register-form" style="display:none" aria-hidden="true" autocomplete="off">
                         <div class="form-row">
-                            <label for="reg-name">Full name</label>
-                            <input id="reg-name" name="name" required placeholder="Enter your full name"
-                                pattern="[A-Za-z\s]{2,50}"
-                                title="Name should be 2-50 characters long and contain only letters and spaces">
+                            <label for="reg-company-name">Company Name</label>
+                            <input id="reg-company-name" name="companyName" required
+                                placeholder="e.g., Green Tech Recyclers">
                         </div>
                         <div class="form-row">
-                            <label for="reg-mobile">Mobile number</label>
-                            <input id="reg-mobile" name="mobile" inputmode="tel" pattern="[0-9]{7,15}"
-                                placeholder="+91 98765..." required>
-                        </div>
-                        <div class="form-row">
-                            <label for="reg-email">Email</label>
-                            <input id="reg-email" type="email" name="email" required placeholder="you@example.com">
-                        </div>
-                        <div class="form-row">
-                            <label for="reg-address">Address</label>
-                            <textarea id="reg-address" name="address" rows="2" required
-                                placeholder="Street, City, State"></textarea>
+                            <label for="reg-owner-name">Owner Name</label>
+                            <input id="reg-owner-name" name="ownerName" required placeholder="Enter owner's full name">
                         </div>
                         <div class="form-row" style="display:flex; gap:0.6rem">
                             <div style="flex:1">
-                                <label for="reg-pincode">Pin code</label>
-                                <input id="reg-pincode" name="pincode" pattern="[0-9]{4,8}" required
-                                    placeholder="560001">
+                                <label for="reg-date">Registration Date</label>
+                                <input id="reg-date" name="registrationDate" type="date" required>
                             </div>
                             <div style="flex:1">
-                                <label for="reg-password">Create password</label>
-                                <input id="reg-password" type="password" name="password" minlength="6" required
-                                    placeholder="••••••">
+                                <label for="reg-license">License No.</label>
+                                <input id="reg-license" name="licenseNo" required placeholder="e.g., CPCB/HW/12345">
                             </div>
                         </div>
                         <div class="form-row">
-                            <label for="reg-password-confirm">Confirm password</label>
-                            <input id="reg-password-confirm" type="password" required placeholder="••••••">
+                            <label for="reg-email">Company Email</label>
+                            <input id="reg-email" type="email" name="email" required placeholder="contact@company.com">
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-contact-no">Contact No.</label>
+                            <input id="reg-contact-no" name="contactNo" inputmode="tel" placeholder="+91 98765..."
+                                required>
+                        </div>
+                        <div class="form-row">
+                            <label for="reg-plant-address">Address of Plant</label>
+                            <textarea id="reg-plant-address" name="address" rows="2" required
+                                placeholder="Street, City, State, Pincode"></textarea>
                         </div>
 
                         <div class="auth-actions">
                             <div class="left">
-                                <button class="btn btn-primary" type="submit">Create account</button>
+                                <button class="btn btn-primary" type="submit">Submit for Verification</button>
                                 <button id="cancelRegister" type="button" class="btn btn-secondary">Cancel</button>
                             </div>
                         </div>
@@ -481,12 +478,12 @@
         });
         // initialize correct state on load
         updateBrandCard();
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // document.getElementById('year').textContent = new Date().getFullYear();
         // optional quick guest (just redirects home)
         document.getElementById('quickGuest')?.addEventListener('click', (e) => { e.preventDefault(); location.href = 'index.html'; });
     </script>
 
-    <script type="module" src="user-auth.js"></script>
+    <script type="module" src="company-auth.js"></script>
 </body>
 
 </html>
