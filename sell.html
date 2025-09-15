@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List an Item - EcoCollect</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="sell.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo-container">
+                <img src="Logo_image.jpg" alt="EcoCollect Logo" class="logo_img">
+                <span class="nav-logo-text">EcoCollect</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link">Recycle Dashboard</a></li>
+                <li class="nav-item"><a href="#" class="nav-link btn btn-primary">My Account</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="sell-main">
+        <section class="sell-form-section">
+            <div class="container">
+                <h2>List Your E-Waste Item for Recycling</h2>
+                <p class="section-subtitle">Fill out the details below to connect with recyclers.</p>
+                
+                <form id="sell-form" class="sell-form">
+                    <div class="form-group">
+                        <label for="product-name">Item Name (e.g., Dell Latitude Laptop, iPhone X)</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" required>
+                            <option value="">-- Select a Category --</option>
+                            <option value="Computers & Laptops">Computers & Laptops</option>
+                            <option value="Mobile Phones & Tablets">Mobile Phones & Tablets</option>
+                            <option value="Computer Accessories">Computer Accessories</option>
+                            <option value="Monitors & Display Devices">Monitors & Display Devices</option>
+                            <option value="Printers & Scanners">Printers & Scanners</option>
+                            <option value="Home Appliances">Home Appliances</option>
+                            <option value="Large Appliances">Large Appliances</option>
+                            <option value="Batteries & Power Devices">Batteries & Power Devices</option>
+                            <option value="Networking Devices">Networking Devices</option>
+                            <option value="Lighting & Other Electronics">Lighting & Other Electronics</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-brand">Brand (e.g., Apple, Samsung, HP)</label>
+                        <input type="text" id="product-brand">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-age">Age of Item (in years)</label>
+                        <input type="number" id="product-age" min="0" step="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="working-condition">Working Condition</label>
+                        <select id="working-condition" required>
+                            <option value="Working">Working</option>
+                            <option value="Not Working">Not Working</option>
+                            <option value="Partially Working">Partially Working</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-image">Upload Image(s) (You can select multiple files)</label>
+                        <input type="file" id="product-image" accept="image/*" multiple required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-description">Description (optional)</label>
+                        <textarea id="product-description" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="submit-btn">List My Item</button>
+
+                    <p id="status-message" class="status-message"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyAe5wWyI_IXj3_vMG_-8pre7tNqtrpby7w",
+          authDomain: "eco-collect-980c3.firebaseapp.com",
+          projectId: "eco-collect-980c3",
+          storageBucket: "eco-collect-980c3.firebasestorage.app",
+          messagingSenderId: "1075357476751",
+          appId: "1:1075357476751:web:cccd2ea09f7ed393320dfa",
+          measurementId: "G-R0GRV80Y3H"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+    </script>
+    
+    <script type="module" src="sell.js"></script>
+</body>
+</html>

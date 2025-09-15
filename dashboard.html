@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard - EcoCollect</title>
+    <!-- Link to homepage styles and dashboard-specific styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header and Navigation Bar (Same as Homepage) -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo-container">
+                <img src="https://placehold.co/100x100/2ECC71/FFFFFF?text=EC&font=poppins" alt="EcoCollect Logo" class="logo_img">
+                <span class="nav-logo-text">EcoCollect</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="#" class="nav-link btn btn-primary">My Account</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <!-- Dashboard Header -->
+        <section class="dashboard-header">
+            <div class="container">
+                <h1>Recycling Dashboard</h1>
+                <p>Browse and select e-waste items available for recycling.</p>
+            </div>
+        </section>
+
+        <!-- Category Filter Bar -->
+        <section class="category-filter">
+            <div class="container">
+                <nav id="category-nav" class="category-nav">
+                    <!-- Categories will be dynamically inserted here by JavaScript -->
+                </nav>
+            </div>
+        </section>
+
+        <!-- Product Listings -->
+        <section class="product-listings">
+            <div class="container" id="listings-container">
+                <!-- Product listings will be dynamically inserted here by JavaScript -->
+                <p id="loading-message">Loading available e-waste listings...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Same as Homepage) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>EcoCollect</h3>
+                    <p>Your one-stop solution for sustainable e-waste management. Join us in making the world a greener place.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#faq">FAQs</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoCollect. All Rights Reserved. A college project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        // Your web app's Firebase configuration
+        // IMPORTANT: Replace with your actual config
+        const firebaseConfig = {
+  apiKey: "AIzaSyAe5wWyI_IXj3_vMG_-8pre7tNqtrpby7w",
+  authDomain: "eco-collect-980c3.firebaseapp.com",
+  projectId: "eco-collect-980c3",
+  storageBucket: "eco-collect-980c3.firebasestorage.app",
+  messagingSenderId: "1075357476751",
+  appId: "1:1075357476751:web:cccd2ea09f7ed393320dfa",
+  measurementId: "G-R0GRV80Y3H"
+};
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+    </script>
+    
+    <!-- Dashboard specific JavaScript -->
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>

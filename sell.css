@@ -1,0 +1,86 @@
+.sell-main {
+    padding-top: 100px;
+}
+
+.sell-form-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.sell-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group input[type="file"] {
+    padding: 0;
+    border: none;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background-color: #27ae60;
+}
+
+.sell-form button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.status-message.success {
+    color: var(--primary-color);
+}
+
+.status-message.error {
+    color: #e74c3c;
+}

@@ -1,0 +1,264 @@
+/* --- Dashboard Main Content --- */
+.dashboard-main {
+    padding-top: 80px; /* Adjust based on header height */
+}
+
+/* --- Dashboard Header --- */
+.dashboard-header {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.dashboard-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Category Filter Bar --- */
+.category-filter {
+    background-color: #f9f9f9;
+    padding: 1rem 0;
+    z-index: 90;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.category-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.category-nav a {
+    padding: 10px 20px;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--light-color);
+}
+
+.category-nav a:hover, .category-nav a.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+/* --- Product Listings --- */
+.product-listings {
+    padding: 4rem 0;
+}
+
+.category-section {
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --- Product Grid for 4 columns --- */
+.product-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, 1fr); /* Mobile default: 1 column */
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* Small Desktop */
+@media (min-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+.product-card {
+    background: var(--white-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-card-content p {
+    margin-bottom: 1rem;
+    color: #7f8c8d;
+    flex-grow: 1;
+}
+
+.product-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+/* --- Style for no products message --- */
+.no-products-message {
+    grid-column: 1 / -1; /* Makes the message span all columns of the grid */
+    text-align: center;
+    color: #7f8c8d;
+    padding: 3rem 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;  /* MODIFIED: Made modal wider for gallery */
+    border-radius: 10px;
+    position: relative;
+    animation: slide-down 0.4s ease-out;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- NEW: Styles for Modal Image Gallery --- */
+
+#modal-body {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.modal-gallery {
+    flex: 1;
+}
+
+.modal-details {
+    flex: 1;
+}
+
+.modal-details h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.modal-details p {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.modal-details strong {
+    color: var(--dark-color);
+}
+
+.modal-main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    max-height: 350px;
+}
+
+.modal-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.modal-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    object-fit: cover;
+}
+
+.modal-thumbnail:hover {
+    border-color: var(--primary-color);
+}
+
+/* Responsive adjustments for the modal */
+@media(max-width: 768px) {
+    #modal-body {
+        flex-direction: column;
+    }
+}

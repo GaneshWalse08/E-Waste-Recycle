@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoCollect - Buy, Sell, & Recycle Used Goods</title>
+    <title>EcoCollect - Buy, Sell, & Recycle E-Waste</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -13,10 +13,14 @@
     <!-- Header and Navigation Bar -->
     <header class="header">
         <nav class="navbar">
-            <a href="index.html" class="nav-logo">EcoCollect</a>
+            <!-- FIX: Wrapped image and text in a single anchor tag -->
+            <a href="index.html" class="nav-logo-container">
+                <img src="Logo_image.jpg" alt="EcoCollect Logo" class="logo_img">
+                <span class="nav-logo-text">EcoCollect</span>
+            </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
                 <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
@@ -34,15 +38,15 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1>Turn Your Trash Into Treasure</h1>
-                <p>The easiest way to sell, buy, and recycle your old electronics, furniture, and more. Join our community and make a positive impact on the planet.</p>
+                <h1>Turn Your E-Waste Into Treasure</h1>
+                <p>The easiest way to sell, buy, and recycle your old electronics. Join our community and make a positive impact on the planet.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">Get Started</a>
                     <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/600x400/EBF5FB/333333?text=Eco-Friendly+Illustration" alt="Eco-friendly illustration of recycling and reusing items">
+                <img src="https://placehold.co/600x400/EBF5FB/333333?text=E-Waste+Recycling" alt="Eco-friendly illustration of recycling e-waste">
             </div>
         </section>
 
@@ -57,9 +61,9 @@
                     </div>
                     <div class="about-text">
                         <h3>Our Mission</h3>
-                        <p>At EcoCollect, our mission is to create a circular economy by providing a seamless platform for individuals and businesses to buy, sell, and recycle pre-owned goods. We believe in reducing waste, conserving resources, and giving products a second life.</p>
+                        <p>At EcoCollect, our mission is to create a circular economy by providing a seamless platform for individuals and businesses to buy, sell, and recycle e-waste. We believe in reducing waste and giving electronics a second life.</p>
                         <h3>Our Vision</h3>
-                        <p>We envision a world where waste is minimized, and every item is utilized to its full potential. By connecting sellers with buyers and recyclers, we aim to build a sustainable community that values conscious consumption and environmental responsibility.</p>
+                        <p>We envision a world where electronic waste is minimized, and every device is utilized to its full potential. By connecting sellers with buyers and recyclers, we aim to build a sustainable community that values environmental responsibility.</p>
                     </div>
                 </div>
             </div>
@@ -69,24 +73,24 @@
         <section id="services" class="services-section">
             <div class="container">
                 <h2>Our Services</h2>
-                <p class="section-subtitle">One platform, multiple solutions for your old stuff.</p>
+                <p class="section-subtitle">One platform, multiple solutions for your old electronics.</p>
                 <div class="service-cards">
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
-                        <h3>Buy Products</h3>
-                        <p>Find great deals on second-hand electronics, furniture, and more. Quality products at affordable prices.</p>
+                        <h3>Buy E-Waste</h3>
+                        <p>Find great deals on second-hand electronics from trusted sellers. Quality devices at affordable prices.</p>
                         <a href="buy.html" class="btn btn-tertiary">Browse Items</a>
                     </div>
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-tag"></i></div>
-                        <h3>Sell Products</h3>
-                        <p>List your old items in minutes. Declutter your space, earn extra cash, and find a new home for your goods.</p>
+                        <h3>Sell E-Waste</h3>
+                        <p>List your old electronics in minutes. Declutter your space and earn extra cash from your used devices.</p>
                         <a href="sell.html" class="btn btn-tertiary">List an Item</a>
                     </div>
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-recycle"></i></div>
-                        <h3>Recycle Waste</h3>
-                        <p>Connect with certified recyclers for your e-waste, scrap metal, and other materials. Dispose of items responsibly.</p>
+                        <h3>Recycle E-Waste</h3>
+                        <p>Connect with certified recyclers for your e-waste. Dispose of your old electronics responsibly.</p>
                         <a href="recycle.html" class="btn btn-tertiary">Find a Recycler</a>
                     </div>
                 </div>
@@ -117,7 +121,7 @@
                         <div class="timeline-icon"><i class="fas fa-handshake"></i></div>
                         <div class="timeline-content">
                             <h3>3. Connect & Transact</h3>
-                            <p>Chat with buyers, sellers, or recyclers directly on our platform to arrange pickup and payment securely.</p>
+                            <p>Chat with buyers, sellers, or recyclers directly on our platform to arrange the transaction securely.</p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +134,7 @@
                  <div class="e-waste-content">
                     <div class="e-waste-text">
                         <h2>EcoCollect: Your E-Waste Recycling Solution</h2>
-                        <p>Dispose of your old electronics responsibly with EcoCollect! Our convenient doorstep pickup service simplifies recycling and selling e-waste. We ensure your e-waste is sent to authorized recycling centers, where it's processed to give new life to your devices while minimizing environmental impact. Sell your e-waste online with us today, and be a part of our mission for a greener, more sustainable planet!</p>
+                        <p>Dispose of your old electronics responsibly with EcoCollect! We connect you with authorized recycling centers to give new life to your devices while minimizing environmental impact. Sell or recycle your e-waste online with us today and be a part of our mission for a greener planet!</p>
                     </div>
                     <div class="e-waste-image">
                         <img src="https://placehold.co/550x450/E8F8F5/1ABC9C?text=Recycle+E-Waste" alt="E-Waste Recycling Illustration">
@@ -144,21 +148,21 @@
             <div class="container">
                 <div class="action-card-container">
                     <div class="action-card">
-                        <img src="https://placehold.co/400x250/D6EAF8/3498DB?text=Buy+Products" alt="Buy second-hand products">
-                        <h3>Buy Products</h3>
-                        <p>Discover a wide range of pre-loved items from trusted sellers in your community.</p>
+                        <img src="https://placehold.co/400x250/D6EAF8/3498DB?text=Buy+Electronics" alt="Buy second-hand electronics">
+                        <h3>Buy Electronics</h3>
+                        <p>Discover a wide range of pre-loved devices from trusted sellers in your community.</p>
                         <a href="buy.html" class="btn btn-primary">Start Buying</a>
                     </div>
                     <div class="action-card">
-                        <img src="https://placehold.co/400x250/D5F5E3/2ECC71?text=Sell+Your+Items" alt="Sell your used items">
-                        <h3>Sell Your Items</h3>
-                        <p>Turn your clutter into cash. List your items for sale and reach thousands of potential buyers.</p>
+                        <img src="https://placehold.co/400x250/D5F5E3/2ECC71?text=Sell+Your+Electronics" alt="Sell your used electronics">
+                        <h3>Sell Your Electronics</h3>
+                        <p>Turn your old gadgets into cash. List your items for sale and reach thousands of potential buyers.</p>
                         <a href="sell.html" class="btn btn-primary">Start Selling</a>
                     </div>
                     <div class="action-card">
-                        <img src="https://placehold.co/400x250/FCF3CF/F1C40F?text=Recycle+Responsibly" alt="Recycle your waste">
-                        <h3>Recycle Waste</h3>
-                        <p>Find local recycling centers and services to dispose of your e-waste and other materials responsibly.</p>
+                        <img src="https://placehold.co/400x250/FCF3CF/F1C40F?text=Recycle+E-Waste" alt="Recycle your e-waste">
+                        <h3>Recycle E-Waste</h3>
+                        <p>Find local recycling centers and services to dispose of your e-waste responsibly.</p>
                         <a href="recycle.html" class="btn btn-primary">Start Recycling</a>
                     </div>
                 </div>
@@ -169,27 +173,27 @@
         <section id="why-choose-us" class="why-choose-us-section">
             <div class="container">
                 <h2>Why Choose Us?</h2>
-                <p class="section-subtitle">Efficient disposal and the best value for your used goods.</p>
+                <p class="section-subtitle">Efficient e-waste disposal and the best value for your used electronics.</p>
                 <div class="features-grid">
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                         <h3>Trusted Partner</h3>
-                        <p>Sell your items with confidence. We're known for fair dealings and transparent transactions.</p>
+                        <p>Connect with confidence. We're known for fair dealings and transparent transactions.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-leaf"></i></div>
-                        <h3>Eco-Friendly Disposal</h3>
-                        <p>Rest easy knowing your waste is in good hands and contributing to a cleaner environment.</p>
+                        <h3>Eco-Friendly</h3>
+                        <p>Rest easy knowing your e-waste is in good hands, contributing to a cleaner environment.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-cogs"></i></div>
                         <h3>Seamless Process</h3>
-                        <p>Say goodbye to complications. Our streamlined approach guarantees a hassle-free journey.</p>
+                        <p>Say goodbye to complications. Our streamlined platform guarantees a hassle-free journey.</p>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon"><i class="fas fa-rupee-sign"></i></div>
-                        <h3>Competitive Pricing</h3>
-                        <p>Our competitive rates ensure you receive the best value for your used items and scrap.</p>
+                        <h3>Best Value</h3>
+                        <p>Our platform helps you get the best value for your used electronics and e-waste.</p>
                     </div>
                 </div>
             </div>
@@ -217,7 +221,7 @@
             </div>
         </section>
 
-        <!-- NEW: FAQ Section -->
+        <!-- FAQ Section -->
         <section id="faq" class="faq-section">
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
@@ -225,38 +229,38 @@
                 <div class="faq-container">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>What kind of scrap do you take?</h3>
+                            <h3>What kind of items can be listed?</h3>
                             <i class="fas fa-plus"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>We primarily facilitate the exchange of e-waste and other electronic items.</p>
+                            <p>We exclusively focus on e-waste. This includes used electronics like phones, laptops, components, and other devices.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Do you take scrap in bulk quantity?</h3>
+                            <h3>Can I list items in bulk?</h3>
                             <i class="fas fa-plus"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes, our platform supports listings for bulk quantities of scrap materials.</p>
+                            <p>Yes, our platform supports listings for bulk quantities of e-waste materials.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Do you charge for doorstep pickup?</h3>
+                            <h3>Do you provide pickup and drop-off services?</h3>
                             <i class="fas fa-plus"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>No, we do not currently provide pickup services. Our platform's main purpose is to connect you directly with recyclers and buyers, who may offer their own pickup services.</p>
+                            <p>No, EcoCollect does not provide any logistics services. Our platform's main purpose is to connect you directly with recyclers and buyers. You must arrange pickup or delivery with them.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Are your rates negotiable?</h3>
+                            <h3>Are the rates negotiable?</h3>
                             <i class="fas fa-plus"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>The prices are subject to change based on market fluctuations in the scrap industry. Once a price is agreed upon between a buyer and seller, it will remain unchanged for that transaction. Different rates may apply for larger, bulk quantities.</p>
+                            <p>Prices are set by the sellers and are subject to market fluctuations. Once a price is agreed upon between a buyer and seller, it is fixed for that transaction. Different rates may apply for larger, bulk quantities.</p>
                         </div>
                     </div>
                 </div>
@@ -270,7 +274,7 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <h3>EcoCollect</h3>
-                    <p>Your one-stop solution for sustainable living. Join us in making the world a greener place, one transaction at a time.</p>
+                    <p>Your one-stop solution for sustainable e-waste management. Join us in making the world a greener place.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
